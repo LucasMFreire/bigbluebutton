@@ -110,7 +110,9 @@ package org.bigbluebutton.lib.whiteboard.models
 			_pollContainer.removeChildren();
 			
 			for (var i:int = _pollRects.length - 1; i >= 0; i--) {
-				canvas.removeElement(_pollRects[i]);
+				if (canvas.containsElement(_pollRects[i])) {
+					canvas.removeElement(_pollRects[i]);
+				}
 				_pollRects.removeItemAt(i);
 			}
 			
