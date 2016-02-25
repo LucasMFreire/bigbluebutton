@@ -67,8 +67,10 @@ package org.bigbluebutton.lib.whiteboard.services {
 		
 		private function handleNewAnnotationCommand(message:Object):void {
 			trace(LOG + "handleNewAnnotationCommand received");
-			message = JSON.parse(message.msg).shape.shape;
-			AnnotationUtil.createAnnotation(message);
+			message = JSON.parse(message.msg).shape;
+			if(message.shape.hasOwnProperty("id")){
+				message = message.shape;
+			}
 			var tempAnnotation:IAnnotation = AnnotationUtil.createAnnotation(message);
 			if (tempAnnotation != null) {
 				_userSession.presentationList.addAnnotation(tempAnnotation);
@@ -91,7 +93,10 @@ package org.bigbluebutton.lib.whiteboard.services {
 				var tempAnnotations:Array = new Array();
 				for (var i:int = 0; i < msg.count; i++) {
 					var an:Object = annotations[i] as Object;
-					var tempAnnotation:IAnnotation = AnnotationUtil.createAnnotation(an.shapes);
+					if(an.shapes.hasOwnProperty("id")){
+						an = an.shapes;
+					}
+					var tempAnnotation:IAnnotation = AnnotationUtil.createAnnotation(an);
 					if (tempAnnotation != null) {
 						tempAnnotations.push(tempAnnotation);
 					} else {

@@ -4,6 +4,7 @@ package org.bigbluebutton.lib.util {
 	import org.bigbluebutton.lib.whiteboard.models.IAnnotation;
 	import org.bigbluebutton.lib.whiteboard.models.LineAnnotation;
 	import org.bigbluebutton.lib.whiteboard.models.PencilAnnotation;
+	import org.bigbluebutton.lib.whiteboard.models.PollResultAnnotation;
 	import org.bigbluebutton.lib.whiteboard.models.RectangleAnnotation;
 	import org.bigbluebutton.lib.whiteboard.models.TextAnnotation;
 	import org.bigbluebutton.lib.whiteboard.models.TriangleAnnotation;
@@ -34,6 +35,13 @@ package org.bigbluebutton.lib.util {
 					break;
 				case AnnotationType.TEXT:
 					return new TextAnnotation(an.type, an.id, an.whiteboardId, an.status, an.fontColor, an.fontSize, an.calcedFontSize, an.dataPoints, an.textBoxHeight, an.textBoxWidth, an.x, an.y, an.text);
+					break;
+				case AnnotationType.POLL:
+					if(an.hasOwnProperty("shapes")){
+						return new PollResultAnnotation(an.type, an.id, an.shapes.whiteboardId, an.status, an.shapes.points, an.shapes.result);
+					} else {
+						return new PollResultAnnotation(an.type, an.id, an.shape.whiteboardId, an.status, an.shape.points, an.shape.result);
+					}
 					break;
 				default:
 					return null;
