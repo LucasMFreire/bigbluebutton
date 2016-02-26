@@ -87,18 +87,41 @@ package org.bigbluebutton.air.main.views.profile {
 		
 		private function changeStatusIcon(status:String) {
 			switch (status) {
+				case User.RAISE_HAND_09:
 				case User.RAISE_HAND:
 					view.statusButton.styleName = "handStatusButtonStyle videoAudioSettingStyle contentFontSize";
 					break;
+				case User.AGREE:
+				 	view.statusButton.styleName = "agreeStatusButtonStyle";
+					break;
+				case User.DISAGREE:
+					view.statusButton.styleName = "disagreeStatusButtonStyle";
+					break;
+				case User.SPEAK_LOUDER:
+					view.statusButton.styleName = "speakLouderStatusButtonStyle";
+					break;
+				case User.SPEAK_LOWER:
+					view.statusButton.styleName = "speakSofterStatusButtonStyle";
+					break;
+				case User.SPEAK_FASTER:
+					view.statusButton.styleName = "speakFasterStatusButtonStyle";
+					break;
+				case User.SPEAK_SLOWER:
+					view.statusButton.styleName = "speakSlowerStatusButtonStyle";
+					break;
+				case User.BE_RIGHT_BACK:
 				case User.AWAY:
 					view.statusButton.styleName = "beRightBackStatusButtonStyle";
 					break;
+				case User.LAUGHTER:
 				case User.HAPPY:
 					view.statusButton.styleName = "laughterStatusButtonStyle";
 					break;
+				case User.SAD_09:
 				case User.SAD:
 					view.statusButton.styleName = "sadStatusButtonStyle";
 					break;
+				case User.NO_STATUS_09:
 				case User.NO_STATUS:
 					view.statusButton.styleName = "noStatusButtonStyle";
 					break;

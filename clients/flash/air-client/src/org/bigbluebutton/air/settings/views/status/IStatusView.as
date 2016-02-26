@@ -10,5 +10,7 @@ package org.bigbluebutton.air.settings.views.status {
 	
 	public interface IStatusView extends IView {
 		function get statusList():List;
+		function get currentState():String
+		function set currentState(value:String):void
 	}
 }

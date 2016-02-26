@@ -71,6 +71,7 @@ package org.bigbluebutton.lib.user.services {
 				case "meetingEnded":
 					handleMeetingHasEnded(message);
 					break;
+				case "participantStatusChange":
 				case "userEmojiStatus":
 					handleEmojiStatusHand(message);
 					break;
@@ -204,8 +205,15 @@ package org.bigbluebutton.lib.user.services {
 		
 		private function handleEmojiStatusHand(m:Object):void {
 			var msg:Object = JSON.parse(m.msg);
-			trace("UsersMessageReceiver::handleEmojiStatusHand() -- user [" + msg.userId + "," + msg.emojiStatus + "] ");
-			userSession.userList.statusChange(msg.userId, msg.emojiStatus);
+			
+			if(userSession.serverVersion == "0.9"){
+				var value:String = msg.value.substr(0, msg.value.indexOf(","));
+				trace("UsersMessageReceiver::handleEmojiStatusHand() -- user [" + msg.userID + "," + value + "] ");
+				userSession.userList.statusChange(msg.userID, value);
+			} else {
+				trace("UsersMessageReceiver::handleEmojiStatusHand() -- user [" + msg.userId + "," + msg.emojiStatus + "] ");
+				userSession.userList.statusChange(msg.userId, msg.emojiStatus);
+			}
 		}
 		
 		private function handleVoiceUserTalking(m:Object):void {
@@ -246,30 +254,58 @@ package org.bigbluebutton.lib.user.services {
 			user.muted = newUser.voiceUser.muted;
 			user.guest = newUser.guest;
 			user.waitingForAcceptance = newUser.waitingForAcceptance;
-			var status:String = newUser.status;
+			var status:String;
+			if(newUser.hasOwnProperty("mood")){
+				status = newUser.mood;
+			} else {
+				status = newUser.status;
+			}
 			if (newUser.raiseHand) {
 				user.status = User.RAISE_HAND;
 			}
 			if (status) {
 				switch (status.substr(0, status.indexOf(","))) {
+					case "BE_RIGHT_BACK":
 					case "away":
 						user.status = User.AWAY;
 						break;
+					case "LAUGHTER":
 					case "happy":
 						user.status = User.HAPPY;
 						break;
 					case "neutral":
 						user.status = User.NEUTRAL;
 						break;
+					case "SAD":
 					case "sad":
 						user.status = User.SAD;
 						break;
 					case "confused":
 						user.status = User.CONFUSED;
 						break;
+					case "RAISE_HAND":
 					case "raiseHand":
 						user.status = User.RAISE_HAND;
 						break;
+					case "AGREE":
+						user.status = User.AGREE;
+						break;
+					case "DISAGREE":
+						user.status = User.DISAGREE;
+						break;
+					case "SPEAK_LOUDER":
+						user.status = User.SPEAK_LOUDER;
+						break;
+					case "SPEAK_LOWER":
+						user.status = User.SPEAK_LOWER;
+						break;
+					case "SPEAK_FASTER":
+						user.status = User.SPEAK_FASTER;
+						break;
+					case "SPEAK_SLOWER":
+						user.status = User.SPEAK_SLOWER;
+						break;
+					case "NO_STATUS":
 					case "":
 					case "none":
 						user.status = User.NO_STATUS;

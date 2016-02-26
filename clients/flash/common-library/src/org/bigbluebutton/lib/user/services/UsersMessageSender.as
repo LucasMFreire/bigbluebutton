@@ -38,9 +38,16 @@ package org.bigbluebutton.lib.user.services {
 		public function emojiStatus(userID:String, emoji:String):void
 		{
 			var message:Object = new Object();
-			message["emojiStatus"] = emoji;
-			message["userId"] = userID;
-			userSession.mainConnection.sendMessage("participants.userEmojiStatus", defaultSuccessResponse, defaultFailureResponse, message);
+			if(userSession.serverVersion == "0.9"){
+				message["value"] = emoji;
+				message["userID"] = userID;
+				message["status"] = "mood";
+				userSession.mainConnection.sendMessage("participants.setParticipantStatus", defaultSuccessResponse, defaultFailureResponse, message);
+			} else {
+				message["emojiStatus"] = emoji;
+				message["userId"] = userID;
+				userSession.mainConnection.sendMessage("participants.userEmojiStatus", defaultSuccessResponse, defaultFailureResponse, message);
+			}
 		}
 		
 		public function addStream(userID:String, streamName:String):void {

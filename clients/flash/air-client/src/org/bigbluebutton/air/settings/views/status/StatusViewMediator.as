@@ -35,6 +35,11 @@ package org.bigbluebutton.air.settings.views.status {
 		public var emojiSignal:EmojiSignal;
 		
 		override public function initialize():void {
+			if(userSession.serverVersion == "0.9"){
+				view.currentState = "version_09"
+			} else {
+				view.currentState = "version_10"
+			}
 			var userMe:User = userSession.userList.me;
 			view.statusList.addEventListener(IndexChangeEvent.CHANGE, onEmojiChange);
 			userSession.userList.userChangeSignal.add(userChanged);
