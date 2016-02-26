@@ -8,6 +8,7 @@ package org.bigbluebutton.lib.main.services {
 		function get loginSuccessSignal():ISignal;
 		function get getConfigSuccessSignal():ISignal;
 		function get getProfilesSuccessSignal():ISignal;
+		function get getVersionSuccessSignal():ISignal;
 		function get loginFailureSignal():ISignal;
 		function login(urlRequest:URLRequest, url:String):void;
 	}

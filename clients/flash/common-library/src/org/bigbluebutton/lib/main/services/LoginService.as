@@ -8,6 +8,7 @@ package org.bigbluebutton.lib.main.services {
 	import org.bigbluebutton.lib.main.models.Config;
 	import org.bigbluebutton.lib.video.models.VideoProfileManager;
 	import org.bigbluebutton.lib.video.services.ProfilesService;
+	import org.bigbluebutton.lib.video.services.VersionService;
 	import org.osflash.signals.ISignal;
 	import org.osflash.signals.Signal;
 	
@@ -19,6 +20,8 @@ package org.bigbluebutton.lib.main.services {
 		protected var _getConfigSuccessSignal:Signal = new Signal();
 		
 		protected var _getProfilesSuccessSignal:Signal = new Signal();
+		
+		protected var _getVersionSuccessSignal:Signal = new Signal();
 		
 		protected var _successGetProfilesSignal:Signal = new Signal();
 		
@@ -40,6 +43,10 @@ package org.bigbluebutton.lib.main.services {
 		
 		public function get getProfilesSuccessSignal():ISignal {
 			return _getProfilesSuccessSignal;
+		}
+		
+		public function get getVersionSuccessSignal():ISignal {
+			return _getVersionSuccessSignal;
 		}
 		
 		protected function fail(reason:String):void {
@@ -72,11 +79,20 @@ package org.bigbluebutton.lib.main.services {
 			dispatchVideoProfileManager(prof);
 		}
 		
+		protected function onVersionResponse(xml:XML):void {
+			trace("success version");
+			getVersionSuccessSignal.dispatch(xml.version);
+		}
+		
 		protected function failedLoadingProfiles(reason:String):void {
 			trace("failed video profile: " + reason);
 			var prof:VideoProfileManager = new VideoProfileManager();
 			prof.parseConfigXml(_config.getConfigFor("VideoconfModule"));
 			dispatchVideoProfileManager(prof);
+		}
+		
+		protected function failedLoadingVersion(reason:String):void {
+			trace("failed version: " + reason);
 		}
 		
 		protected function getServerUrl(url:String):String {
@@ -91,6 +107,11 @@ package org.bigbluebutton.lib.main.services {
 			profilesService.successSignal.add(onProfilesResponse);
 			profilesService.unsuccessSignal.add(failedLoadingProfiles);
 			profilesService.getProfiles(getServerUrl(_config.application.host), _urlRequest);
+			
+			var versionService:VersionService = new VersionService();
+			versionService.successSignal.add(onVersionResponse);
+			versionService.unsuccessSignal.add(failedLoadingVersion);
+			versionService.getVersion(getServerUrl(_config.application.host), _urlRequest);
 		}
 		
 		protected function afterEnter(result:Object):void {

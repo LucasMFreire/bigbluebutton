@@ -47,6 +47,7 @@ package org.bigbluebutton.air.main.commands {
 			loginService.loginSuccessSignal.add(loginSuccess);
 			loginService.getConfigSuccessSignal.add(configSuccess);
 			loginService.getProfilesSuccessSignal.add(profilesSuccess);
+			loginService.getVersionSuccessSignal.add(versionSuccess);
 			loginService.loginFailureSignal.add(joinFailure);
 			loginService.login(urlRequest, responseUrl);
 		}
@@ -63,6 +64,10 @@ package org.bigbluebutton.air.main.commands {
 		
 		protected function profilesSuccess(profiles:VideoProfileManager):void {
 			userSession.videoProfileManager = profiles;
+		}
+		
+		protected function versionSuccess(version:String):void {
+			userSession.serverVersion = version;
 		}
 		
 		protected function joinFailure(reason:String):void {

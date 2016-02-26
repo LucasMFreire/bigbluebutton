@@ -66,5 +66,7 @@ package org.bigbluebutton.lib.main.models {
 		function get pushToTalk():Boolean;
 		function set pushToTalk(value:Boolean):void;
 		function get pushToTalkSignal():ISignal;
+		function set serverVersion(value:String):void;
+		function get serverVersion():String;
 	}
 }

@@ -59,6 +59,8 @@ package org.bigbluebutton.lib.main.models {
 		
 		protected var _pushToTalk:Boolean;
 		
+		protected var _serverVersion:String;
+		
 		protected var _guestPolicySignal:ISignal = new Signal();
 		
 		protected var _loadedMessageHistorySignal:ISignal = new Signal();
@@ -210,6 +212,14 @@ package org.bigbluebutton.lib.main.models {
 		public function set pushToTalk(value:Boolean):void {
 			_pushToTalk = value;
 			_pushToTalkSignal.dispatch();
+		}
+		
+		public function get serverVersion():String {
+			return _serverVersion;
+		}
+		
+		public function set serverVersion(value:String):void {
+			_serverVersion = value;
 		}
 		
 		public function UserSession() {
