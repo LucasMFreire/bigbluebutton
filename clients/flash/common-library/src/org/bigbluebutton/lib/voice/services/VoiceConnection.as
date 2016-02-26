@@ -102,8 +102,14 @@ package org.bigbluebutton.lib.voice.services {
 			// we don't use scope in the voice communication (many hours lost on it)
 			_conferenceParameters = confParams;
 			_listenOnly = listenOnly;
-			_username = encodeURIComponent(confParams.internalUserID + "-bbbID-" + confParams.username);
-			baseConnection.connect(_applicationURI, confParams.meetingID, confParams.externUserID, _username);
+			
+			if (userSession.serverVersion == "0.9") {
+				_username = encodeURIComponent(confParams.externUserID + "-bbbID-" + confParams.username);
+				baseConnection.connect(_applicationURI, confParams.username, _username, confParams.externMeetingID);
+			} else {
+				_username = encodeURIComponent(confParams.internalUserID + "-bbbID-" + confParams.username);
+				baseConnection.connect(_applicationURI, confParams.meetingID, confParams.externUserID, _username);
+			}
 		}
 		
 		public function disconnect(onUserCommand:Boolean):void {
