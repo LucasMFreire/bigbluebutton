@@ -382,30 +382,37 @@ package org.bigbluebutton.lib.user.models {
 					case User.RAISE_HAND:
 						userChangeSignal.dispatch(p.participant, RAISE_HAND);
 						break;
+					case User.AGREE_09:
 					case User.AGREE:
 						userChangeSignal.dispatch(p.participant, AGREE);
 						break;
+					case User.DISAGREE_09:
 					case User.DISAGREE:
 						userChangeSignal.dispatch(p.participant, DISAGREE);
 						break;
+					case User.SPEAK_LOUDER_09:
 					case User.SPEAK_LOUDER:
 						userChangeSignal.dispatch(p.participant, SPEAK_LOUDER);
 						break;
+					case User.SPEAK_SOFTER:
 					case User.SPEAK_LOWER:
 						userChangeSignal.dispatch(p.participant, SPEAK_LOWER);
 						break;	
 					case User.AWAY:
 						userChangeSignal.dispatch(p.participant, AWAY);
 						break;
+					case User.SPEAK_FASTER_09:
 					case User.SPEAK_FASTER:
 						 userChangeSignal.dispatch(p.participant, SPEAK_FASTER);
 						 break;
 					case User.HAPPY:
 						userChangeSignal.dispatch(p.participant, HAPPY);
 						break;
+					case User.SPEAK_SLOWER_09:
 					case User.SPEAK_SLOWER:
 						userChangeSignal.dispatch(p.participant, SPEAK_SLOWER);
 						break;
+					case User.BE_RIGHT_BACK_09:
 					case User.BE_RIGHT_BACK:
 						userChangeSignal.dispatch(p.participant, BE_RIGHT_BACK);
 						break;

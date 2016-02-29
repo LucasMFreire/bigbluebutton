@@ -13,9 +13,10 @@
 			override public function set data(obj:Object):void {
 				super.data = obj;
 				if (obj) {
-					presentationIcon.visible = presentationIcon.includeInLayout = obj.presenter && (obj.status == User.NO_STATUS);
-					profileIcon.visible = ((obj.role == User.MODERATOR) && (!obj.presenter) && (obj.status == User.NO_STATUS));
-					profileIcon.includeInLayout = (!obj.presenter) && (obj.status == User.NO_STATUS);
+					trace("++ wth? " + obj.status);
+					presentationIcon.visible = presentationIcon.includeInLayout = obj.presenter && (obj.status == User.NO_STATUS || obj.status == User.NO_STATUS_09);
+					profileIcon.visible = ((obj.role == User.MODERATOR) && (!obj.presenter) && (obj.status == User.NO_STATUS || obj.status == User.NO_STATUS_09));
+					profileIcon.includeInLayout = (!obj.presenter) && (obj.status == User.NO_STATUS || obj.status == User.NO_STATUS_09);
 					cameraIcon.visible = obj.hasStream;
 					micIcon.visible = micIcon.includeInLayout = (obj.voiceJoined && !obj.muted);
 					lockIcon.visible = obj.locked;
@@ -29,15 +30,15 @@
 						labelDisplay.text = obj.name;
 					}
 					handIcon.visible = handIcon.includeInLayout =  (obj.status == User.RAISE_HAND) || (obj.status == User.RAISE_HAND_09);
-					beRightBackIcon.visible = beRightBackIcon.includeInLayout = (obj.status == User.AWAY) || (obj.status == User.BE_RIGHT_BACK);
+					beRightBackIcon.visible = beRightBackIcon.includeInLayout = (obj.status == User.AWAY) || (obj.status == User.BE_RIGHT_BACK) || (obj.status == User.BE_RIGHT_BACK_09);
 					laughterIcon.visible = laughterIcon.includeInLayout = (obj.status == User.HAPPY) || (obj.status == User.LAUGHTER);
 					sadIcon.visible = sadIcon.includeInLayout = (obj.status == User.SAD) || (obj.status == User.SAD_09);
-					agreeIcon.visible = agreeIcon.includeInLayout = obj.status == User.AGREE;
-					disagreeIcon.visible = disagreeIcon.includeInLayout = obj.status == User.DISAGREE;
-					speakLouderIcon.visible = speakLouderIcon.includeInLayout = obj.status == User.SPEAK_LOUDER;
-					speakSofterIcon.visible = speakSofterIcon.includeInLayout = obj.status == User.SPEAK_LOWER;
-					speakFasterIcon.visible = speakFasterIcon.includeInLayout = obj.status == User.SPEAK_FASTER;
-					speakSlowerIcon.visible = speakSlowerIcon.includeInLayout = obj.status == User.SPEAK_SLOWER;
+					agreeIcon.visible = agreeIcon.includeInLayout = (obj.status == User.AGREE || obj.status == User.AGREE_09);
+					disagreeIcon.visible = disagreeIcon.includeInLayout = (obj.status == User.DISAGREE || obj.status == User.DISAGREE_09);
+					speakLouderIcon.visible = speakLouderIcon.includeInLayout = (obj.status == User.SPEAK_LOUDER || obj.status == User.SPEAK_LOUDER_09);
+					speakSofterIcon.visible = speakSofterIcon.includeInLayout = (obj.status == User.SPEAK_LOWER || obj.status == User.SPEAK_SOFTER);
+					speakFasterIcon.visible = speakFasterIcon.includeInLayout = (obj.status == User.SPEAK_FASTER || obj.status == User.SPEAK_FASTER_09);
+					speakSlowerIcon.visible = speakSlowerIcon.includeInLayout = (obj.status == User.SPEAK_SLOWER || obj.status == User.SPEAK_SLOWER_09);
 					
 					if (obj.presenter) {
 						subLabelDisplay.visible = subLabelDisplay.includeInLayout = true;

@@ -33,19 +33,33 @@ package org.bigbluebutton.lib.user.models {
 		
 		public static const AWAY:String = "away";
 		
-		public static const AGREE:String = "AGREE";
+		public static const AGREE:String = "agree";
+		
+		public static const AGREE_09:String = "AGREE";
 				
-		public static const DISAGREE:String = "DISAGREE";
+		public static const DISAGREE:String = "disagree";
+		
+		public static const DISAGREE_09:String = "DISAGREE";
+		
+		public static const SPEAK_LOUDER:String = "speakLouder";
 				
-		public static const SPEAK_LOUDER:String = "SPEAK_LOUDER";
-				
+		public static const SPEAK_LOUDER_09:String = "SPEAK_LOUDER";
+		
+		public static const SPEAK_SOFTER:String = "speakSofter";
+		
 		public static const SPEAK_LOWER:String = "SPEAK_LOWER";
-				
-		public static const SPEAK_FASTER:String = "SPEAK_FASTER";
 		
-		public static const SPEAK_SLOWER:String = "SPEAK_SLOWER";
+		public static const SPEAK_FASTER:String = "speakFaster";
 		
-		public static const BE_RIGHT_BACK:String = "BE_RIGHT_BACK";
+		public static const SPEAK_FASTER_09:String = "SPEAK_FASTER";
+		
+		public static const SPEAK_SLOWER:String = "speakSlower";
+		
+		public static const SPEAK_SLOWER_09:String = "SPEAK_SLOWER";
+		
+		public static const BE_RIGHT_BACK:String = "beRightBack";
+		
+		public static const BE_RIGHT_BACK_09:String = "BE_RIGHT_BACK";
 		
 		public static const LAUGHTER:String = "LAUGHTER";
 		

@@ -15,15 +15,15 @@
 				if (obj) {
 					profileIcon.visible = profileIcon.includeInLayout = (obj.signal == User.NO_STATUS) || (obj.signal == User.NO_STATUS_09);
 					handIcon.visible = handIcon.includeInLayout = (obj.signal == User.RAISE_HAND) || (obj.signal == User.RAISE_HAND_09);
-					beRightBackIcon.visible = beRightBackIcon.includeInLayout = (obj.signal == User.AWAY) || (obj.signal == User.BE_RIGHT_BACK);
+					beRightBackIcon.visible = beRightBackIcon.includeInLayout = (obj.signal == User.AWAY) || (obj.signal == User.BE_RIGHT_BACK) || (obj.signal == User.BE_RIGHT_BACK_09);
 					laughterIcon.visible = laughterIcon.includeInLayout = (obj.signal == User.HAPPY) || (obj.signal == User.LAUGHTER);
 					sadIcon.visible = sadIcon.includeInLayout = (obj.signal == User.SAD) || (obj.signal == User.SAD_09);
-					agreeIcon.visible = agreeIcon.includeInLayout = obj.signal == User.AGREE;
-					disagreeIcon.visible = disagreeIcon.includeInLayout = obj.signal == User.DISAGREE;
-					speakLouderIcon.visible = speakLouderIcon.includeInLayout = obj.signal == User.SPEAK_LOUDER;
-					speakSofterIcon.visible = speakSofterIcon.includeInLayout = obj.signal == User.SPEAK_LOWER;
-					speakFasterIcon.visible = speakFasterIcon.includeInLayout = obj.signal == User.SPEAK_FASTER;
-					speakSlowerIcon.visible = speakSlowerIcon.includeInLayout = obj.signal == User.SPEAK_SLOWER;
+					agreeIcon.visible = agreeIcon.includeInLayout = (obj.signal == User.AGREE || obj.signal == User.AGREE_09);
+					disagreeIcon.visible = disagreeIcon.includeInLayout = (obj.signal == User.DISAGREE || obj.signal == User.DISAGREE_09);
+					speakLouderIcon.visible = speakLouderIcon.includeInLayout = (obj.signal == User.SPEAK_LOUDER || obj.signal == User.SPEAK_LOUDER_09);
+					speakSofterIcon.visible = speakSofterIcon.includeInLayout = (obj.signal == User.SPEAK_LOWER || obj.signal == User.SPEAK_SOFTER);
+					speakFasterIcon.visible = speakFasterIcon.includeInLayout = (obj.signal == User.SPEAK_FASTER || obj.signal == User.SPEAK_FASTER_09);
+					speakSlowerIcon.visible = speakSlowerIcon.includeInLayout = (obj.signal == User.SPEAK_SLOWER || obj.signal == User.SPEAK_SLOWER_09);
 				}
 			}
 		]]>

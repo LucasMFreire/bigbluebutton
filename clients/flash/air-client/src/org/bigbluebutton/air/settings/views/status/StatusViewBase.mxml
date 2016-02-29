@@ -27,7 +27,7 @@
 							   signal.version_10="raiseHand"
 							   signal.version_09="RAISE_HAND"/>
 					<fx:Object data="{resourceManager.getString('resources', 'profile.settings.beRightBack')}"
-							   signal.version_10="away"
+							   signal.version_10="beRightBack"
 							   signal.version_09="BE_RIGHT_BACK"/>
 					<fx:Object data="{resourceManager.getString('resources', 'profile.settings.laughter')}"
 							   signal.version_10="happy"
@@ -36,23 +36,23 @@
 							   signal.version_10="sad"
 							   signal.version_09="SAD"/>
 					<fx:Object data="{resourceManager.getString('resources', 'profile.settings.agree')}"
-							   signal="AGREE"
-							   excludeFrom="version_10" />
+							   signal.version_09="AGREE"
+							   signal.version_10="agree" />
 					<fx:Object data="{resourceManager.getString('resources', 'profile.settings.disagree')}"
-							   signal="DISAGREE"
-							   excludeFrom="version_10" />
+							   signal.version_09="DISAGREE"
+							   signal.version_10="disagree" />
 					<fx:Object data="{resourceManager.getString('resources', 'profile.settings.speakLouder')}"
-							   signal="SPEAK_LOUDER"
-							   excludeFrom="version_10" />
+							   signal.version_09="SPEAK_LOUDER"
+							   signal.version_10="speakLouder" />
 					<fx:Object data="{resourceManager.getString('resources', 'profile.settings.speakSofter')}"
-							   signal="SPEAK_LOWER"
-							   excludeFrom="version_10" />
+							   signal.version_09="SPEAK_LOWER"
+							   signal.version_10="speakSofter" />
 					<fx:Object data="{resourceManager.getString('resources', 'profile.settings.speakFaster')}"
-							   signal="SPEAK_FASTER"
-							   excludeFrom="version_10" />
+							   signal.version_09="SPEAK_FASTER"
+							   signal.version_10="speakFaster" />
 					<fx:Object data="{resourceManager.getString('resources', 'profile.settings.speakSlower')}"
-							   signal="SPEAK_SLOWER"
-							   excludeFrom="version_10" />
+							   signal.version_09="SPEAK_SLOWER"
+							   signal.version_10="speakSlower" />
 				</s:ArrayList>
 			</s:List>
 		</s:VGroup>

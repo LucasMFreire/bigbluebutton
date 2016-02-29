@@ -91,24 +91,31 @@ package org.bigbluebutton.air.main.views.profile {
 				case User.RAISE_HAND:
 					view.statusButton.styleName = "handStatusButtonStyle videoAudioSettingStyle contentFontSize";
 					break;
+				case User.AGREE_09:
 				case User.AGREE:
 				 	view.statusButton.styleName = "agreeStatusButtonStyle";
 					break;
+				case User.DISAGREE_09:
 				case User.DISAGREE:
 					view.statusButton.styleName = "disagreeStatusButtonStyle";
 					break;
+				case User.SPEAK_LOUDER_09:
 				case User.SPEAK_LOUDER:
 					view.statusButton.styleName = "speakLouderStatusButtonStyle";
 					break;
+				case User.SPEAK_SOFTER:
 				case User.SPEAK_LOWER:
 					view.statusButton.styleName = "speakSofterStatusButtonStyle";
 					break;
+				case User.SPEAK_FASTER_09:
 				case User.SPEAK_FASTER:
 					view.statusButton.styleName = "speakFasterStatusButtonStyle";
 					break;
+				case User.SPEAK_SLOWER_09:
 				case User.SPEAK_SLOWER:
 					view.statusButton.styleName = "speakSlowerStatusButtonStyle";
 					break;
+				case User.BE_RIGHT_BACK_09:
 				case User.BE_RIGHT_BACK:
 				case User.AWAY:
 					view.statusButton.styleName = "beRightBackStatusButtonStyle";
