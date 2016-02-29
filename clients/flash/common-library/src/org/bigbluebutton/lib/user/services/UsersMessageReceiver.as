@@ -207,13 +207,16 @@ package org.bigbluebutton.lib.user.services {
 			var msg:Object = JSON.parse(m.msg);
 			
 			if(userSession.serverVersion == "0.9"){
-				trace("++ ah " + ObjectUtil.toString(msg));
-				var value:String = msg.value.substr(0, msg.value.indexOf(","));
-				trace("UsersMessageReceiver::handleEmojiStatusHand() -- user [" + msg.userID + "," + value + "] ");
-				if(value == "CLEAR_STATUS" || value == "CLEAR_MOOD"){
-					value = User.NO_STATUS;
+				if(msg.status == "presenter"){
+					userSession.userList.assignPresenter(msg.userID);
+				} else {
+					var value:String = msg.value.substr(0, msg.value.indexOf(","));
+					trace("UsersMessageReceiver::handleEmojiStatusHand() -- user [" + msg.userID + "," + value + "] ");
+					if(value == "CLEAR_STATUS" || value == "CLEAR_MOOD"){
+						value = User.NO_STATUS;
+					}
+					userSession.userList.statusChange(msg.userID, value);
 				}
-				userSession.userList.statusChange(msg.userID, value);
 			} else {
 				trace("UsersMessageReceiver::handleEmojiStatusHand() -- user [" + msg.userId + "," + msg.emojiStatus + "] ");
 				userSession.userList.statusChange(msg.userId, msg.emojiStatus);
